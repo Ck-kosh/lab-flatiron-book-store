@@ -1,3 +1,7 @@
+
+// Delete the placeholder element
+const elementToDelete = document.getElementById('delete-this');
+elementToDelete.remove();
 const bookStore = {
     name: 'Flatbooks Technical Books',
     books: [
@@ -39,9 +43,27 @@ const bookStore = {
             author: 'Gayle Laakmann McDowell',
             imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/41oYsXjLvZL._SY344_BO1,204,203,200_.jpg'
             
-        }
+        }  
     ]
 }
 
 // Write your code here!
 
+const bookList = document.getElementById('book-list');
+
+//  Loop and create elements for each book
+bookStore.books.forEach(function(book) {
+    const bookContainer = document.createElement('li');
+
+    const bookTitle = document.createElement('h3');
+    bookTitle.textContent = book.title;
+
+    const bookAuthor = document.createElement('p');
+    bookAuthor.textContent = book.author;
+
+    const bookImage = document.createElement('img');
+    bookImage.src = book.imageUrl;
+
+    bookContainer.append(bookTitle, bookAuthor, bookImage);
+    bookList.append(bookContainer);
+});
